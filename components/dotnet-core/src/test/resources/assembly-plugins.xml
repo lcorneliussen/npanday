@@ -1,0 +1,14 @@
+<assemblyPlugins>
+    <assemblyPlugin>
+        <identifier>CS</identifier>
+        <pluginClass>npanday.assembler.impl.DefaultAssemblyInfoMarshaller</pluginClass>
+        <language>C_SHARP</language>
+        <extension>cs</extension>
+    </assemblyPlugin>
+    <assemblyPlugin>
+        <identifier>CS</identifier>
+        <pluginClass>npanday.assembler.impl.DefaultAssemblyInfoMarshaller</pluginClass>
+        <language>NEMERELE</language>
+        <extension>cs</extension>
+    </assemblyPlugin>
+</assemblyPlugins>

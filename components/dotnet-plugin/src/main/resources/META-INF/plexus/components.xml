@@ -1,0 +1,25 @@
+<component-set>
+  <components>
+    <component>
+      <role>npanday.plugin.DotNetMojo</role>
+      <implementation>npanday.plugin.AbstractMojo</implementation>
+      <requirements>
+        <requirement>
+          <role>npanday.executable.NetExecutableFactory</role>
+        </requirement>
+        <requirement>
+          <role>npanday.plugin.PluginContext</role>
+        </requirement>
+      </requirements>
+    </component>
+    <component>
+      <role>npanday.plugin.PluginContext</role>
+      <implementation>npanday.plugin.impl.PluginContextImpl</implementation>
+      <requirements>
+        <requirement>
+          <role>npanday.registry.RepositoryRegistry</role>
+        </requirement>
+      </requirements>
+    </component>
+  </components>
+</component-set>

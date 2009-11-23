@@ -1,0 +1,89 @@
+ -----
+ Light Mojo Usage
+ -----
+
+Light Mojo Usage
+
+ Brief examples on how to use the light goal.
+
+* The <<<light>>> mojo
+
+ If you want to convert a single WiX Object (.wixobj) file into a MSI (.msi) file, use this configuration in your pom:
+
++---+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>npanday.plugin</groupId>
+        <artifactId>npanday-wix-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <objectFile>Sample.wixobj</objectFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  ...
+  </build>
+...
+</project>
++---+
+
+ By default the .msi file will have the same name as the single .wixobj file.  
+
+ Generally this will be done in a separate module with pom packaging.
+
+ If you want to convert multiple WiX Object (.wixobj) files into a MSI (.msi) file, use this configuration in your pom:
+
++---+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>npanday.plugin</groupId>
+        <artifactId>wix-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <objectFiles>
+            <objectFile>Sample.wixobj</objectFile>
+            <objectFile>Another.wixobj</objectFile>
+          </objectFiles>
+          <outputFile>SampleInstaller.msi</outputFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  ...
+  </build>
+...
+</project>
++---+
+
+Because there is more than one object file, the outputFile parameter is required to tell WiX what to name the .msi file.
+
+If you have used the outputDirectory parameter for the candle goal, you may need to include the location of the WiX object files:
+
++-----+
+      <plugin>
+        <groupId>npanday.plugin</groupId>
+        <artifactId>wix-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <configuration>
+          <objectFiles>
+            <objectFile>target/IT005.wixobj</objectFile>
+          </objectFiles>
+          <outputFile>target/IT005.msi</outputFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>wix</id>
+            <goals>
+              <goal>light</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
++-----+
+
+It is always a good idea to put generated files under the 'target' directory so that they are cleaned up properly.

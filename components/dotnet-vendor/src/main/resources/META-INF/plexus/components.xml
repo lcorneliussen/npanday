@@ -1,0 +1,27 @@
+<component-set>
+    <components>
+        <component>
+            <role>npanday.vendor.VendorInfoRepository</role>
+            <implementation>npanday.vendor.impl.VendorInfoRepositoryImpl</implementation>
+            <requirements>
+                <requirement>
+                    <role>npanday.registry.RepositoryRegistry</role>
+                </requirement>
+            </requirements>
+        </component>
+
+        <component>
+            <role>npanday.vendor.StateMachineProcessor</role>
+            <implementation>npanday.vendor.impl.StateMachineProcessorImpl</implementation>
+            <requirements>
+                <requirement>
+                    <role>npanday.vendor.VendorInfoRepository</role>
+                </requirement>
+                <requirement>
+                    <role>npanday.registry.RepositoryRegistry</role>
+                </requirement>
+            </requirements>
+        </component>
+    </components>
+</component-set>
+

@@ -1,0 +1,51 @@
+Install From File System
+
+ First, make sure that the repository containing the NMaven assembliies and vsinstaller is located on your local file
+ system. Typically, you would only do this for testing or for installing from a non-standard repo location.
+ Next, configure your settings.xml file to point to your repo.
+
++----+
+<settings>
+  <profiles>
+    <profile>
+      <id>nmaven.snapshots</id>
+      <repositories>
+        <repository>
+          <id>local</id>
+          <name>Maven Plugin Snapshots</name>
+          <url>file://C:\m2\repo</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>local</id>
+          <name>Maven Plugin Snapshots</name>
+          <url>file://C:\m2\repo</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+</settings>
++----+
+
+ Due to a bug in Maven, if you are remotely resolving a plugin that doesn't exist in central, you will need to install
+ from a directory containing a pom.xml file. So if you have a pom.xml handy, goto that directory from the command line.
+ If not, you will need to download one and goto to the download directory from the command line. Now type the following from
+ the command line:
+
++----+
+ mvn org.apache.maven.dotnet.plugins:maven-vsinstaller-plugin:install
++----+
+

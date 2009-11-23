@@ -1,0 +1,7 @@
+<archetype>
+  <id>maven-archetype-dotnet-simple</id>
+  <resources>
+    <resource>src/main/csharp/Sample/MyApp.cs</resource>
+    <resource>src/test/csharp/Sample/MyAppTest.cs</resource>    
+  </resources>
+</archetype>

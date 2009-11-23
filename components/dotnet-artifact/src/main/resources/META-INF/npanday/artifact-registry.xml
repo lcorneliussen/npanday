@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<registry-config>
+  <repositories>
+    <repository>
+      <repository-name>net-dependencies</repository-name>
+      <repository-class>npanday.artifact.impl.NetDependenciesRepositoryImpl</repository-class>
+      <repository-config>/META-INF/npanday/net-dependencies.xml</repository-config>
+    </repository>
+  </repositories>
+</registry-config>

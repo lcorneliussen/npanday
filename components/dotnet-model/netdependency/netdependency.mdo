@@ -1,0 +1,98 @@
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<model>
+  <id>netdependency</id>
+  <name>NetDependency</name>
+  <description></description>
+  <defaults>
+    <default>
+      <key>package</key>
+      <value>npanday.model.netdependency</value>
+    </default>
+  </defaults>
+  <classes>
+    <class rootElement="true">
+      <name>NetDependencyModel</name>
+      <fields>
+        <field>
+          <name>netDependencies</name>
+          <description></description>
+          <association>
+            <type>NetDependency</type>
+            <multiplicity>*</multiplicity>
+          </association>
+        </field>
+      </fields>
+    </class>
+    <class xml.tagName="netDependency">
+      <name>NetDependency</name>
+      <fields>
+        <field>
+          <name>id</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description></description>
+        </field>
+        <field>
+          <name>groupId</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description></description>
+        </field>
+        <field>
+          <name>version</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description>
+          </description>
+        </field>
+        <field>
+          <name>artifactId</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description></description>
+        </field>
+        <field>
+          <name>type</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description></description>
+        </field>
+        <field>
+          <name>profile</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description></description>
+        </field>
+        <field>
+          <name>publicKeyToken</name>
+          <version>1.0.0</version>
+          <type>String</type>
+          <description>The public key of the assembly.</description>
+        </field>
+        <field>
+          <name>isGacInstall</name>
+          <version>1.0.0</version>
+          <type>boolean</type>
+          <description>True if the framework should install the net dependency in the GAC, otherwise false.</description>
+        </field>
+      </fields>
+    </class>
+  </classes>
+</model>
