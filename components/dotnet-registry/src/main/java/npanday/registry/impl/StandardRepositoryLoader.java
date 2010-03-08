@@ -26,6 +26,7 @@ import java.util.Hashtable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
+import java.util.regex.Matcher;
 
 /**
  * The default repository loader. This class can be extended
@@ -70,15 +71,20 @@ public class StandardRepositoryLoader
                 ", Properties = " + props.toString() );
         }
 
-        InputStream stream;
         Repository repository;
-        try
+        InputStream stream = null;        
+        if(!fileUri.equals("."))
         {
-            stream = new FileInputStream( fileUri );
-        }
-        catch ( IOException e )
-        {
-            stream = this.getClass().getResourceAsStream( fileUri );
+            try
+            {
+                String fileSep = System.getProperty("file.separator");
+                String platformPath = fileUri.replaceAll( "/", Matcher.quoteReplacement( fileSep ) );
+                stream = new FileInputStream( platformPath );
+            }
+            catch ( IOException e )
+            {
+                stream = this.getClass().getResourceAsStream( fileUri );
+            }
         }
         String message =
             "File Name = " + fileUri + ", Repository Class = " + repositoryClass + ", Properties = " + props.toString();

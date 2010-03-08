@@ -38,6 +38,7 @@ under the License.
     <module>dotnet-plugin</module>  
     <module>dotnet-registry</module>  
     <module>dotnet-repository</module>  
-    <module>dotnet-vendor</module> 
+    <module>dotnet-vendor</module>
+    <module>dotnet-test</module>
   </modules>  
 </project>
