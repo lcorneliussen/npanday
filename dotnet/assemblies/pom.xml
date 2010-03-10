@@ -42,7 +42,9 @@ under the License.
     <module>NPanday.Utils</module>
     <module>NPanday.ProjectImporter</module>
     <module>NPanday.VisualStudio</module>  
-    <module>NPanday.VisualStudio.Addin</module>  
-    <module>NPanday.VisualStudio.ProjectWizard</module>
+    <!--
+    ResGen /C is not called correctly yet
+    module>NPanday.VisualStudio.Addin</module>  
+    <module>NPanday.VisualStudio.ProjectWizard</module-->
   </modules>
 </project>
