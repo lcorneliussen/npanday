@@ -57,6 +57,12 @@ public class ConnectionsRepository
     {
         long start = System.currentTimeMillis();
 
+		try {
+			throw new Exception("approaching UAC");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
         File dataDir = new File( System.getProperty( "user.home" ), ".m2/uac/rdfRepository" );
         MemoryStore store = new MemoryStore( dataDir );
         store.setPersist( true );

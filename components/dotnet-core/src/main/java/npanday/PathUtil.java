@@ -22,6 +22,7 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.repository.layout.DefaultRepositoryLayout;
 
 import java.io.File;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -125,10 +126,17 @@ public final class PathUtil
      * @param localRepository the local repository.  This value should not be null.
      * @return the path of the artifact within the user assembly cache or null if either of the specified
      *         parameters is null
+     * @throws Throwable 
      */
     public static File getUserAssemblyCacheFileFor( Artifact artifact, File localRepository )
     {
-        if ( artifact == null )
+		try {
+			throw new Exception("approaching UAC");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	if ( artifact == null )
         {
             logger.warning( "NPANDAY-040-005: Artifact is null - Cannot get application file." );
             return null;

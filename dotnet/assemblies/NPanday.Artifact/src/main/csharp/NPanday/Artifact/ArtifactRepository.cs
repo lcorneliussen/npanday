@@ -34,6 +34,11 @@ namespace NPanday.Artifact
 
         public string GetLocalUacPath(Artifact artifact, string ext)
         {
+			try {
+				throw new Exception("approaching UAC");
+			} catch (Exception e) {
+				Console.WriteLine(e.ToString());
+			}
             return Path.Combine(localRepository.FullName, string.Format(@"uac\gac_msil\{1}\{2}__{0}\{1}{3}", artifact.GroupId, artifact.ArtifactId, artifact.Version, ext));
         }
 
@@ -51,6 +56,12 @@ namespace NPanday.Artifact
         {
             Artifact artifact = new Artifact();
 
+			try {
+				throw new Exception("approaching UAC");
+			} catch (Exception e) {
+				Console.WriteLine(e.ToString());
+			}
+			
             DirectoryInfo uac = new DirectoryInfo(localRepository.FullName + @"\uac\gac_msil\");
 
             String[] tokens = uri.Split("/".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -98,6 +109,11 @@ namespace NPanday.Artifact
             List<Artifact> artifacts = new List<Artifact>();
             try
             {
+				try {
+					throw new Exception("approaching UAC");
+				} catch (Exception e) {
+					Console.WriteLine(e.ToString());
+				}
                 DirectoryInfo uac = new DirectoryInfo(localRepository.FullName + @"\uac\gac_msil\");
                 int directoryStartPosition = uac.FullName.Length;
 
@@ -127,6 +143,12 @@ namespace NPanday.Artifact
 
         public Artifact GetArtifact(FileInfo artifactFile)
         {
+			try {
+				throw new Exception("approaching UAC");
+			} catch (Exception e) {
+				Console.WriteLine(e.ToString());
+			}
+
             DirectoryInfo uacDirectory = new DirectoryInfo(localRepository.FullName + @"\uac\gac_msil\");
             return GetArtifact(uacDirectory, artifactFile);
         }

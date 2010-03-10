@@ -82,6 +82,12 @@ public class ArtifactManagerMojo
         String artifactValue = System.getProperty( "artifact" );
         String[] tokens = artifactValue.split( "[:]" );
 
+		try {
+			throw new Exception("approaching UAC");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
         File dataDir = new File( localRepository.getParentFile(), "/uac/rdfRepository" );
         org.openrdf.repository.Repository rdfRepository = new SailRepository( new MemoryStore( dataDir ) );
         try

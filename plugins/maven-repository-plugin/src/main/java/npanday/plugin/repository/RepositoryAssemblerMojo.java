@@ -130,6 +130,11 @@ public class RepositoryAssemblerMojo
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
+		try {
+			throw new Exception("approaching UAC");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         File dataDir = new File( localRepository.getParentFile(), "/uac/rdfRepository" );
         org.openrdf.repository.Repository rdfRepository = new SailRepository( new MemoryStore( dataDir ) );
         try
