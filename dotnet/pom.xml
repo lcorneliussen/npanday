@@ -41,7 +41,8 @@ under the License.
         <groupId>npanday.plugin</groupId>  
         <artifactId>maven-compile-plugin</artifactId>  
         <!-- Must peg to a previous release to avoid MNG-1911 bug -->
-        <version>1.0.2</version>
+        <!-- CANNOT BE BUILT WITHIN THE SAME REACTOR AS THE COMPILE-PLUGIN -->
+        <version>1.2.1-SNAPSHOT</version>
         <extensions>true</extensions>  
         <configuration> 
           <frameworkVersion>2.0.50727</frameworkVersion> 
