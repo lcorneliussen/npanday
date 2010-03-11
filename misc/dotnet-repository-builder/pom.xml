@@ -74,7 +74,7 @@
       <version>${project.version}</version>
       <type>exe</type>
     </dependency>
-    <dependency>
+    <!--dependency>
       <groupId>npanday.visualstudio</groupId>
       <artifactId>NPanday.VisualStudio</artifactId>
       <version>${project.version}</version>
@@ -85,7 +85,7 @@
       <artifactId>NPanday.VisualStudio.Addin</artifactId>
       <version>${project.version}</version>
       <type>visual-studio-addin</type>
-    </dependency>
+    </dependency -->
 
     <!--netplugins-->
     <dependency>
@@ -156,6 +156,8 @@
       <version>2.0-rc2</version> 
     </dependency> 
 -->
+<!--
+Add does not compile right now.
     <dependency> 
       <groupId>npanday.visualstudio</groupId>  
       <artifactId>NPanday.VisualStudio</artifactId>  
@@ -168,6 +170,7 @@
       <version>${project.version}</version>  
       <type>visual-studio-addin</type> 
     </dependency>  
+-->
   </dependencies>
   <build>
     <plugins>
