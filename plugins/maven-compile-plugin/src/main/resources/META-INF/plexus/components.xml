@@ -75,7 +75,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             org.apache.maven.plugins:maven-deploy-plugin:deploy
           </deploy>
         </phases>
@@ -119,7 +118,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             npanday.plugin:maven-deploy-plugin:deploy
           </deploy>
         </phases>
@@ -210,7 +208,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             org.apache.maven.plugins:maven-deploy-plugin:deploy
           </deploy>
         </phases>
@@ -255,7 +252,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             org.apache.maven.plugins:maven-deploy-plugin:deploy
           </deploy>
         </phases>
@@ -300,7 +296,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             org.apache.maven.plugins:maven-deploy-plugin:deploy
           </deploy>
         </phases>
@@ -344,7 +339,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             org.apache.maven.plugins:maven-deploy-plugin:deploy
           </deploy>
         </phases>
@@ -388,7 +382,6 @@
             org.apache.maven.plugins:maven-install-plugin:install
           </install>
           <deploy>
-            npanday.plugin:maven-repository-plugin:convert-artifact,
             org.apache.maven.plugins:maven-deploy-plugin:deploy
           </deploy>               
         </phases>
