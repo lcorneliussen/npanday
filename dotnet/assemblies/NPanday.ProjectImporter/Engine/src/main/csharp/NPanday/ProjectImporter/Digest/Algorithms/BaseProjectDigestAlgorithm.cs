@@ -1,4 +1,4 @@
-﻿using Microsoft.Build.BuildEngine;
+using Microsoft.Build.BuildEngine;
 using System.IO;
 
 namespace NPanday.ProjectImporter.Digest.Algorithms

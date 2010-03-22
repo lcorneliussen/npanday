@@ -1,8 +1,5 @@
 package npanday.plugin.vsinstaller
 
-import java.io.File;
-
-import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
 import junit.framework.Assert;

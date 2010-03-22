@@ -133,11 +133,16 @@ under the License.
       <id>eworley</id>  
       <email>eworley@apache.org</email>  
     </developer>        
-    <!--Emeritus Committers-->
-  </developers>  
+  </developers>
   <contributors>
     <contributor>
       <name>Kurt Harriger</name>
+    </contributor>
+    <contributor>
+      <name>Lars Corneliussen</name>
+    </contributor>
+    <contributor>
+      <name>Thorsten Kamann</name>
     </contributor>
   </contributors>
   <modules> 
@@ -396,6 +401,20 @@ under the License.
               </execution> 
             </executions> 
           </plugin>  
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <configuration>
+              <passphrase>${gpg.passphrase}</passphrase>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
         </plugins> 
       </build>
     </profile>
