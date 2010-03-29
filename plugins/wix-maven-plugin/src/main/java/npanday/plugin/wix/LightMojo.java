@@ -33,7 +33,7 @@ import java.io.IOException;
  * @phase package
  */
 public class LightMojo
-    extends AbstractMojo
+    extends AbstractWixMojo
 {
     /**
      * Location of the WiX object files.
@@ -98,7 +98,13 @@ public class LightMojo
           else if (outputDirectory != null) {
             line = line + " -out " + outputDirectory.getAbsolutePath() + "\\";
           }
-          
+
+          if ( extensions != null ) {
+            for ( String ext : extensions ) {
+              line += " -ext " + ext;
+            }
+          }
+
           CommandLine commandLine = CommandLine.parse(line);
           DefaultExecutor executor = new DefaultExecutor();
           int exitValue = executor.execute(commandLine);
