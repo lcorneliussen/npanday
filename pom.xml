@@ -451,7 +451,7 @@ under the License.
     <npanday.snapshots.url>http://repo.npanday.org/archiva/repository/npanday-snapshots</npanday.snapshots.url>
     <npanday.releases.url>http://repo.npanday.org/archiva/repository/npanday-releases</npanday.releases.url>
   </properties>  
-  <distributionManagement>
+  <!--distributionManagement>
     <snapshotRepository>
       <id>npanday.snapshots</id>
       <name>NPanday Snapshots Repository</name>
@@ -462,7 +462,19 @@ under the License.
       <name>NPanday Releases Repository</name>
       <url>${npanday.releases.url}</url>
     </repository>
-  </distributionManagement>
+  </distributionManagement-->
+	<distributionManagement>
+		<repository>
+			<id>nexus.netcologne.intern</id>
+			<name>NetCologne Release Repository</name>
+			<url>http://ncvsccm01e:8082/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus.netcologne.intern</id>
+			<name>NetCologne Snapshot Repository</name>
+			<url>http://ncvsccm01e:8082/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
   <!-- TODO: need to get these into central after 1.1 -->
   <pluginRepositories>
     <pluginRepository>

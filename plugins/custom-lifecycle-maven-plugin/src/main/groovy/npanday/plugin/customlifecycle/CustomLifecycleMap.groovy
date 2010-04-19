@@ -14,22 +14,30 @@
  */
 package npanday.plugin.customlifecycle;
 
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-
+import org.apache.maven.lifecycle.Lifecycle;
+import npanday.lifecycle.LifecycleMapping;
+import npanday.lifecycle.LifecycleStep;
+import npanday.lifecycle.LifecycleMap;
+import npanday.ArtifactType;
 /**
  * @author Lars Corneliussen
- * @goal describe
- * @description List types and lifecycles this plugin configures.
  */
-public class DescribeMojo
-    extends AbstractMojo
+class CustomLifecycleMap extends LifecycleMap
 {
-
-    public void execute()
-        throws MojoExecutionException, MojoFailureException
-    {
-        // TODO: list/describe the plugin extensions. List types and lifecycles
-    }
+	void defineMappings() {
+	    def steps = [
+			new LifecycleStep(
+    			phase: 'install',
+    			goals: ['org.apache.maven.plugins:maven-install-plugin:install']
+			),
+			new LifecycleStep(
+    			phase: 'deploy',
+    			goals: ['org.apache.maven.plugins:maven-deploy-plugin:deploy']
+			)
+		]
+		
+		npanday.ArtifactType.values()
+    		.findAll{it != npanday.ArtifactType.NULL && it.targetCompileType != null}
+    		.each{type->add(new LifecycleMapping(type: type, steps: steps))}
+	}
 }
