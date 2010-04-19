@@ -24,13 +24,13 @@ import java.util.List;
  */
 public abstract class LifecycleMap {
 	List<LifecycleMapping> map = new ArrayList<LifecycleMapping>();
-	
+
 	void add(LifecycleMapping mapping) {
 		map.add(mapping);
 	}
-	
+
 	protected abstract void defineMappings();
-	
+
 	public List<LifecycleMapping> getMap() {
 		return map;
 	}
