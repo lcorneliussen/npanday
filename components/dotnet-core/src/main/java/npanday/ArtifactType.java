@@ -28,25 +28,63 @@ public enum ArtifactType
 {
 	NULL( null, null, null ),
 	
-	// TODO: document types
-	
 	DOTNET_MODULE("dotnet-module", "module", "netmodule"),
 	
+	/**
+	 * A dll-file compiled by any of the .NET compilers.
+	 */
 	DOTNET_LIBRARY("dotnet-library", "library", "dll"),
+	
+	/**
+	 * Configuration file attachable to a library
+	 * artifact.
+	 */
     DOTNET_LIBRARY_CONFIG("dotnet-library-config", null, "dll.config"),
 
+    /**
+     * A exe-file compiled by any of the .NET compilers.
+     */
     DOTNET_EXECUTABLE("dotnet-executable", "exe", "exe"),
+    
+    /**
+	 * Configuration file attachable to a executable
+	 * artifact.
+	 */
     DOTNET_EXECUTABLE_CONFIG("dotnet-executable-config", null, "exe.config"),
 
+    /**
+     * A library that is expected to be installed into the GAC
+     * before it is used.
+     */
     DOTNET_GAC("dotnet-gac", null, "dll"),
     
+    /**
+     * A pdb file containing debug symbols for either
+     * a dll or executable.
+     */
     DOTNET_SYMBOLS("dotnet-symbols", null, "pdb"),
+    
+    /**
+     * A tlb-file that contains information about types
+     * of a library that are accessable through COM.
+     */
     DOTNET_OLE_TYPE_LIB("ole-type-library", null, "tlb"),
     
+    /**
+     * Contains the inline code documentation.
+     */
     DOTNET_VSDOCS("dotnet-vsdocs", null, "xml"),
     
+    /**
+     * A maven plugin authored in .NET.
+     */
     DOTNET_MAVEN_PLUGIN("dotnet-maven-plugin", "library", "dll"),
     
+    /**
+     * A compilation of libraries and their complementary 
+     * files as debug symbols, docs or locale sattelite
+     * assemblies.
+     */
     DOTNET_ARCHIVE("dotnet-archive", null, ".zip"),
 
     // We should reconsider those..
