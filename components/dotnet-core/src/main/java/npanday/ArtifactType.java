@@ -56,7 +56,7 @@ public enum ArtifactType
      * A library that is expected to be installed into the GAC
      * before it is used.
      */
-    DOTNET_GAC("dotnet-gac", null, "dll"),
+    DOTNET_GAC("dotnet-gac", "library", "dll"),
     
     /**
      * A pdb file containing debug symbols for either
