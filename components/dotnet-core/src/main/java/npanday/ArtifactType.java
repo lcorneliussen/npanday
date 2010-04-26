@@ -96,35 +96,41 @@ public enum ArtifactType
     // DOTNET_("dotnet-nar", "library", "nar"),
     // DOTNET_("dotnet-visual-studio-addin", "library", "dll"),
     
-    /* Use DOTNET_MODULE instead
-     * */
+    /** 
+     * Use DOTNET_MODULE instead
+     */
 	@Deprecated
     MODULE( "module", "module", "netmodule" ),
     
-    /* Use DOTNET_LIBRARY instead
-     * */
+    /** 
+     * Use DOTNET_LIBRARY instead
+     */
     @Deprecated
     LIBRARY( "library", "library", "dll" ),
     
-    /* Use DOTNET_EXECUTABLE instead
-     * */
+    /** 
+     * Use DOTNET_EXECUTABLE instead
+     */
 	@Deprecated
     EXE( "exe", "exe", "exe" ),
     
-    /* Use DOTNET_EXECUTABLE instead
-     * */
+    /** 
+     * Use DOTNET_EXECUTABLE instead
+     */
     @Deprecated
     WINEXE( "winexe", "winexe", "exe" ),
     
-    /* Use DOTNET_EXECUTABLE_CONFIG instead
-     * */
+    /** 
+     * Use DOTNET_EXECUTABLE_CONFIG instead
+     */
     @Deprecated
     EXECONFIG( "exe.config", "null", "exe.config" ),
     
     NAR( "nar", null, "nar" ),
     
-    /* Use DOTNET_MAVEN_PLUGIN instead
-     * */
+    /** 
+     * Use DOTNET_MAVEN_PLUGIN instead
+     */
     @Deprecated
     NETPLUGIN( "netplugin", "library", "dll" ),
     
@@ -134,8 +140,9 @@ public enum ArtifactType
     
     ASP ( "asp", "library", "dll" ),
     
-    /* Use DOTNET_GAC instead
-     * */
+    /** 
+     * Use DOTNET_GAC instead
+     */
     @Deprecated
     GAC ( "gac", null, "dll"),
     
