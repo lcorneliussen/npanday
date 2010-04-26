@@ -46,6 +46,8 @@ public enum ArtifactType
     DOTNET_VSDOCS("dotnet-vsdocs", null, "xml"),
     
     DOTNET_MAVEN_PLUGIN("dotnet-maven-plugin", "library", "dll"),
+    
+    DOTNET_ARCHIVE("dotnet-archive", null, ".zip"),
 
     // We should reconsider those..
     
