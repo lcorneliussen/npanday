@@ -19,16 +19,16 @@ import java.util.List;
 /**
  * @author <a href="mailto:me@lcorneliussen.de">Lars Corneliussen</a>
  */
-public class LifecycleStep {
-	String phase;
+public class LifecyclePhase {
+	String name;
 	List<String> goals;
 
 	public String getPhase() {
-		return phase;
+		return name;
 	}
 
-	public void setPhase(String phase) {
-		this.phase = phase;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<String> getGoals() {

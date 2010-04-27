@@ -14,10 +14,9 @@
  */
 package npanday.plugin.customlifecycle;
 
+import npanday.lifecycle.LifecyclePrinter;
+
 import org.codehaus.gmaven.mojo.GroovyMojo;
-import npanday.ArtifactType;
-import npanday.lifecycle.LifecycleMapping;
-import npanday.lifecycle.LifecycleStep;
 /**
  * @author Lars Corneliussen
  * @goal describe
@@ -27,26 +26,6 @@ class DescribeMojo
     extends GroovyMojo
 {
 	void execute() {
-		
-		List<ArtifactType> types = ArtifactType.values()
-				.findAll{it != ArtifactType.NULL}
-		
-		List<LifecycleMapping> lifecycleMappings = new CustomLifecycleMap().map;
-		
-		types.each{type ->
-			getLog().info("");
-			getLog().info("artifact type: ${type.packagingType} (*.${type.extension})");
-			
-			def mapping = lifecycleMappings.find{it.type == type}
-			if (mapping)
-			{
-				mapping.steps.eachWithIndex{step, stepPos ->
-					getLog().info("  on ${step.phase} executes:")
-                        step.goals.eachWithIndex{goal, goalPos ->
-                        	getLog().info("    - ${goal}")
-                        }
-				}
-			}
-		}
+		LifecyclePrinter.printAll(CustomLifecycleMap, {getLog().info(it)})
 	}
 }

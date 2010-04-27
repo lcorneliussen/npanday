@@ -27,7 +27,7 @@ import org.junit.Test
 class TestLifecycleMap extends LifecycleMap
 {
 	void defineMappings() {
-	    add(new LifecycleMapping(type: ArtifactType.DOTNET_LIBRARY, steps: null))
+	    add(new LifecycleMapping(type: ArtifactType.DOTNET_LIBRARY, phases: null))
 	}
 	
 	@Test void pseudo(){}
