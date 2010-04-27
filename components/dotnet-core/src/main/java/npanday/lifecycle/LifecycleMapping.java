@@ -24,7 +24,7 @@ import npanday.ArtifactType;
 public class LifecycleMapping {
 	ArtifactType type;
 
-	List<LifecycleStep> steps;
+	List<LifecyclePhase> phases;
 
 	public ArtifactType getType() {
 		return type;
@@ -34,12 +34,12 @@ public class LifecycleMapping {
 		this.type = type;
 	}
 
-	public List<LifecycleStep> getSteps() {
-		return steps;
+	public List<LifecyclePhase> getPhases() {
+		return phases;
 	}
 
-	public void setSteps(List<LifecycleStep> steps) {
-		this.steps = steps;
+	public void setPhases(List<LifecyclePhase> phases) {
+		this.phases = phases;
 	}
 
 }

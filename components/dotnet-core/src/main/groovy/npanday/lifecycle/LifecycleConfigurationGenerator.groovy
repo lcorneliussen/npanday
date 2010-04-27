@@ -72,8 +72,8 @@ class LifecycleConfigurationGenerator {
 					implementation 'org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping'
 					configuration {
 						phases {
-							mapping.steps.each{LifecycleStep st ->
-								"${st.phase}"("\n" 
+							mapping.phases.each{LifecyclePhase st ->
+								"${st.name}"("\n" 
 								+ " " * 12
 								+ st.goals.join(",\n" + " " * 12)
 								+ "\n" + " "*10)

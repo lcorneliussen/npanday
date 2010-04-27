@@ -16,7 +16,7 @@ package npanday.plugin.compile;
 
 import org.apache.maven.lifecycle.Lifecycle;
 import npanday.lifecycle.LifecycleMapping;
-import npanday.lifecycle.LifecycleStep;
+import npanday.lifecycle.LifecyclePhase;
 import npanday.lifecycle.LifecycleMap;
 import npanday.ArtifactType;
 
@@ -27,7 +27,8 @@ import npanday.ArtifactType;
  */
 class CompileLifecycleMap extends LifecycleMap
 {
+	
 	void defineMappings() {
-		
+		add(new LifecycleMapping(type: ArtifactType.LIBRARY, phases: null))
 	}
 }

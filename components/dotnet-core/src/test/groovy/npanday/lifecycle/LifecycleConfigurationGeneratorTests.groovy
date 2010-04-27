@@ -80,7 +80,7 @@ class LifecycleConfigurationGeneratorTests {
 	@Test
 	void configureDotnetLibraryMapping() {
 		def g = new LifecycleConfigurationGenerator()
-		g.configureMappings ([new LifecycleMapping(type: ArtifactType.DOTNET_LIBRARY, steps: null)])
+		g.configureMappings ([new LifecycleMapping(type: ArtifactType.DOTNET_LIBRARY, phases: null)])
 
 		def root = new XmlSlurper().parseText(g.currentXml)
 		assert 1 == root.components.component.size()
