@@ -46,29 +46,32 @@ class CompileLifecycleMap extends LifecycleMap
 	def np_test = "npanday.plugin:maven-test-plugin:test" 
 	def np_convert = "npanday.plugin:maven-repository-plugin:convert-artifact"
 	
-	void forType(ArtifactType type, Closure phases){
-		add(LifecycleMappingBuilder.build(type, phases))
-	}
-	
 	void defineMappings() {
+		
+		def default_validate = [np_compile_init, np_resolve, np_generate_settings]
+		def default_generate_sources = [np_generate_assemblyinfo]
+		def default_process_resources = [np_resgen_copy, np_resgen_generate, np_resgen_resx]
+		def default_process_sources = [np_compile_process_sources, np_compile_process_test_sources]
+		def default_install = [np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install]
+		
 		forType( ArtifactType.LIBRARY ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, 'npanday.plugin:maven-deploy-plugin:deploy')
 		}
 		forType( ArtifactType.NAR ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
@@ -77,22 +80,22 @@ class CompileLifecycleMap extends LifecycleMap
 		}
 		forType( ArtifactType.MODULE ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
 			b.package ('npanday.plugin:maven-link-plugin:package')
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, mv_deploy)
 		}
 		forType( ArtifactType.ASP ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
 			b.process_sources (np_compile_process_sources, np_compile_process_test_sources, 'npanday.plugin:maven-aspx-plugin:copy-dependency')
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile, 'npanday.plugin:maven-aspx-plugin:compile')
 			b.test_compile (np_test_compile)
 			b.test (np_test)
@@ -102,63 +105,63 @@ class CompileLifecycleMap extends LifecycleMap
 		}
 		forType( ArtifactType.EXE ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, mv_deploy)
 		}
 		forType( ArtifactType.WINEXE ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, mv_deploy)
 		}
 		forType( ArtifactType.NETPLUGIN ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.deploy ('npanday.plugin:maven-mojo-generator-plugin:generate-bindings')
 			b.test (np_test)
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, mv_deploy)
 		}
 		forType( ArtifactType.VISUAL_STUDIO_ADDIN ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, mv_deploy)
 		}
 		forType( ArtifactType.SHARP_DEVELOP_ADDIN ) {
 			LifecycleMappingBuilder b->
-			b.validate (np_compile_init, np_resolve, np_generate_settings)
-			b.generate_sources (np_generate_assemblyinfo)
-			b.process_sources (np_compile_process_sources, np_compile_process_test_sources)
-			b.process_resources (np_resgen_copy, np_resgen_generate, np_resgen_resx)
+			b.validate (default_validate)
+			b.generate_sources (default_generate_sources)
+			b.process_sources (default_process_sources)
+			b.process_resources (default_process_resources)
 			b.compile (np_compile)
 			b.test_compile (np_test_compile)
 			b.test (np_test)
-			b.install (np_convert, 'npanday.plugin:maven-install-plugin:install', mv_install)
+			b.install (default_install)
 			b.deploy (np_convert, mv_deploy)
 		}
 		forType( ArtifactType.EXECONFIG ) {
@@ -166,5 +169,9 @@ class CompileLifecycleMap extends LifecycleMap
 			b.install ('npanday.plugin:maven-install-plugin:install')
 			b.deploy (np_convert, mv_deploy)
 		}
+	}
+	
+	void forType(ArtifactType type, Closure phases){
+		add(LifecycleMappingBuilder.build(type, phases))
 	}
 }
