@@ -66,7 +66,7 @@ public enum ArtifactType
     
     /**
      * A tlb-file that contains information about types
-     * of a library that are accessable through COM.
+     * of a library that are accessible through COM.
      */
     DOTNET_OLE_TYPE_LIB("ole-type-library", null, "tlb"),
     
@@ -82,7 +82,7 @@ public enum ArtifactType
     
     /**
      * A compilation of libraries and their complementary 
-     * files as debug symbols, docs or locale satelite
+     * files as debug symbols, docs or local satellite
      * assemblies.
      */
     DOTNET_ARCHIVE("dotnet-archive", null, ".zip"),
