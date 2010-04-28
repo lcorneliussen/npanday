@@ -71,6 +71,11 @@ public enum ArtifactType
     DOTNET_OLE_TYPE_LIB("ole-type-library", null, "tlb"),
     
     /**
+     * A assembly containing
+     */
+    DOTNET_SATELLITE_ASSEMBLY("dotnet-satellite-assembly", "library", "resources.dll"),
+    
+    /**
      * Contains the inline code documentation.
      */
     DOTNET_VSDOCS("dotnet-vsdocs", null, "xml"),
