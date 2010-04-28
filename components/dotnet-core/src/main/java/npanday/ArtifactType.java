@@ -82,7 +82,7 @@ public enum ArtifactType
     
     /**
      * A compilation of libraries and their complementary 
-     * files as debug symbols, docs or locale sattelite
+     * files as debug symbols, docs or locale satelite
      * assemblies.
      */
     DOTNET_ARCHIVE("dotnet-archive", null, ".zip"),
