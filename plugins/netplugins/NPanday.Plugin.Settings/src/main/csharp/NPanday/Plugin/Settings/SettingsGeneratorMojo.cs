@@ -40,7 +40,11 @@ namespace NPanday.Plugin.Settings
 
         public override void Execute()
         {
+			Console.WriteLine("Hello World!");
+			
         	string outputFile = Environment.GetEnvironmentVariable("USERPROFILE") + "/.m2/npanday-settings.xml";
+			
+			Console.WriteLine(outputFile);
             XmlSerializer serializer = new XmlSerializer(typeof(npandaySettings));
 
             npandaySettings  settings = new npandaySettings();
@@ -54,7 +58,7 @@ namespace NPanday.Plugin.Settings
             settings.defaultSetup = GetDefaultSetup(defaultMonoCLR,
                 (string) microsoftRegistryKey.GetValue("InstallRoot"));
 
-            npandaySettingsVendorsVendor[] microsoftVendors = null;
+            npandaySettingsVendor[] microsoftVendors = null;
             try
             {
                 microsoftVendors = GetVendorsForMicrosoft(microsoftRegistryKey);
@@ -64,7 +68,7 @@ namespace NPanday.Plugin.Settings
                 Console.WriteLine(e.ToString());
             }
 
-            npandaySettingsVendorsVendor[] monoVendors = null;
+            npandaySettingsVendor[] monoVendors = null;
             try
             {
                 monoVendors = GetVendorsForMono(monoRegistryKey, defaultMonoCLR);
@@ -74,7 +78,7 @@ namespace NPanday.Plugin.Settings
                 Console.WriteLine(e.ToString());
             }
 
-            npandaySettingsVendorsVendor dotGnuVendor = null;
+            npandaySettingsVendor dotGnuVendor = null;
             try
             {
                 dotGnuVendor = GetVendorForGnu(Environment.GetEnvironmentVariable("CSCC_LIB_PATH"));
@@ -87,8 +91,8 @@ namespace NPanday.Plugin.Settings
             int dotGnuVendorLength = (dotGnuVendor == null) ? 0: 1;
             int microsoftVendorsLength = (microsoftVendors == null) ? 0: microsoftVendors.Length;
 
-            npandaySettingsVendorsVendor[] vendors =
-                new npandaySettingsVendorsVendor[microsoftVendorsLength + monoVendorsLength + dotGnuVendorLength];
+            npandaySettingsVendor[] vendors =
+                new npandaySettingsVendor[microsoftVendorsLength + monoVendorsLength + dotGnuVendorLength];
 
             int copyLocation = 0;
             if(microsoftVendors != null)
@@ -143,7 +147,7 @@ namespace NPanday.Plugin.Settings
             return null;
         }
 
-        protected npandaySettingsVendorsVendor GetVendorForGnu(String libPath)
+        protected npandaySettingsVendor GetVendorForGnu(String libPath)
         {
             if(libPath == null)
                 throw new ExecutionException("NPANDAY-9011-000: No CSCC_LIB_PATH Found");
@@ -159,12 +163,12 @@ namespace NPanday.Plugin.Settings
                         vendorVersion + ", Root = " + installR);
                 }
 
-                npandaySettingsVendorsVendor vendor = new npandaySettingsVendorsVendor();
+                npandaySettingsVendor vendor = new npandaySettingsVendor();
                 vendor.vendorName = "DotGNU";
                 vendor.vendorVersion = vendorVersion;
-                npandaySettingsVendorsVendorFrameworksFramework[] vendorFrameworks 
-                	= new npandaySettingsVendorsVendorFrameworksFramework[1];
-                npandaySettingsVendorsVendorFrameworksFramework vf = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework[] vendorFrameworks 
+                	= new npandaySettingsVendorFramework[1];
+                npandaySettingsVendorFramework vf = new npandaySettingsVendorFramework();
                 vf.installRoot = Path.Combine(installR, "bin");
                 vf.frameworkVersion = "2.0.50727";//doesn't matter
                 vendorFrameworks[0] = vf;                                                    ;
@@ -174,7 +178,7 @@ namespace NPanday.Plugin.Settings
             throw new ExecutionException("NPANDAY-9011-002: CSCC_LIB_PATH found but could not determine vendor information");
         }
 
-        private npandaySettingsVendorsVendor[] GetVendorsForMicrosoft(RegistryKey microsoftRegistryKey)
+        private npandaySettingsVendor[] GetVendorsForMicrosoft(RegistryKey microsoftRegistryKey)
         {
             if(microsoftRegistryKey == null)
                 throw new ExecutionException("NPANDAY-9011-006: Microsoft installation could not be found.");
@@ -185,7 +189,7 @@ namespace NPanday.Plugin.Settings
             
             if(installRoot == null) throw new ExecutionException("NPANDAY-9011-005");
 
-            npandaySettingsVendorsVendor[] vendors = new npandaySettingsVendorsVendor[4];
+            npandaySettingsVendor[] vendors = new npandaySettingsVendor[4];
             DirectoryInfo dirInfo11 = new DirectoryInfo(Path.Combine(installRoot, "v1.1.4322"));
             DirectoryInfo dirInfo20 = new DirectoryInfo(Path.Combine(installRoot, "v2.0.50727"));
             DirectoryInfo dirInfo30 = new DirectoryInfo(Path.Combine(installRoot, "v3.0"));
@@ -193,13 +197,13 @@ namespace NPanday.Plugin.Settings
             int vendorCounter = 0;
             if (dirInfo11.Exists)
             {
-                npandaySettingsVendorsVendor vendor = new npandaySettingsVendorsVendor();
+                npandaySettingsVendor vendor = new npandaySettingsVendor();
                 vendor.vendorName = "MICROSOFT";
                 vendor.vendorVersion = "1.1.4322";
-                npandaySettingsVendorsVendorFrameworksFramework[] vendorFrameworks 
-                	= new npandaySettingsVendorsVendorFrameworksFramework[1];
-                npandaySettingsVendorsVendorFrameworksFramework vf11 
-                	= new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework[] vendorFrameworks 
+                	= new npandaySettingsVendorFramework[1];
+                npandaySettingsVendorFramework vf11 
+                	= new npandaySettingsVendorFramework();
                 vf11.installRoot = dirInfo11.FullName;
                 vf11.frameworkVersion = "1.1.4322";
                 
@@ -211,12 +215,12 @@ namespace NPanday.Plugin.Settings
             }
             if (dirInfo20.Exists)
             {
-                npandaySettingsVendorsVendor vendor = new npandaySettingsVendorsVendor();
+                npandaySettingsVendor vendor = new npandaySettingsVendor();
                 vendor.vendorName = "MICROSOFT";
                 vendor.vendorVersion = "2.0.50727";
-                npandaySettingsVendorsVendorFrameworksFramework[] vendorFrameworks 
-                	= new npandaySettingsVendorsVendorFrameworksFramework[1];
-                npandaySettingsVendorsVendorFrameworksFramework vf11 = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework[] vendorFrameworks 
+                	= new npandaySettingsVendorFramework[1];
+                npandaySettingsVendorFramework vf11 = new npandaySettingsVendorFramework();
                 vf11.installRoot = dirInfo20.FullName;
                 vf11.frameworkVersion = "2.0.50727";
                 vendorFrameworks[0] = vf11;
@@ -226,11 +230,11 @@ namespace NPanday.Plugin.Settings
             }
             if (dirInfo30.Exists)
             {
-                npandaySettingsVendorsVendor vendor = new npandaySettingsVendorsVendor();
+                npandaySettingsVendor vendor = new npandaySettingsVendor();
                 vendor.vendorName = "MICROSOFT";
                 vendor.vendorVersion = "3.0";
-                npandaySettingsVendorsVendorFrameworksFramework[] vendorFrameworks = new npandaySettingsVendorsVendorFrameworksFramework[1];
-                npandaySettingsVendorsVendorFrameworksFramework vf11 = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework[] vendorFrameworks = new npandaySettingsVendorFramework[1];
+                npandaySettingsVendorFramework vf11 = new npandaySettingsVendorFramework();
                 vf11.installRoot = dirInfo30.FullName;
                 vf11.frameworkVersion = "3.0";
                 vendorFrameworks[0] = vf11;
@@ -240,11 +244,11 @@ namespace NPanday.Plugin.Settings
             }
             if (dirInfo35.Exists)
             {
-                npandaySettingsVendorsVendor vendor = new npandaySettingsVendorsVendor();
+                npandaySettingsVendor vendor = new npandaySettingsVendor();
                 vendor.vendorName = "MICROSOFT";
                 vendor.vendorVersion = "3.5";
-                npandaySettingsVendorsVendorFrameworksFramework[] vendorFrameworks = new npandaySettingsVendorsVendorFrameworksFramework[1];
-                npandaySettingsVendorsVendorFrameworksFramework vf11 = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework[] vendorFrameworks = new npandaySettingsVendorFramework[1];
+                npandaySettingsVendorFramework vf11 = new npandaySettingsVendorFramework();
                 vf11.installRoot = dirInfo35.FullName;
                 vf11.frameworkVersion = "3.5";
                 vendorFrameworks[0] = vf11;
@@ -256,11 +260,11 @@ namespace NPanday.Plugin.Settings
             return vendors;
         }
 
-        private npandaySettingsVendorsVendor[] GetVendorsForMono(RegistryKey monoRegistryKey, string defaultMonoCLR)
+        private npandaySettingsVendor[] GetVendorsForMono(RegistryKey monoRegistryKey, string defaultMonoCLR)
         {
             if(monoRegistryKey == null)
                 throw new ExecutionException("NPANDAY-9011-007: Mono installation czould not be found.");
-            npandaySettingsVendorsVendor[] vendors = new npandaySettingsVendorsVendor[monoRegistryKey.SubKeyCount];
+            npandaySettingsVendor[] vendors = new npandaySettingsVendor[monoRegistryKey.SubKeyCount];
             int i = 0;
             foreach (string keyName in monoRegistryKey.GetSubKeyNames())
             {
@@ -268,23 +272,23 @@ namespace NPanday.Plugin.Settings
                 if(sdkInstallRoot == null)
                     throw new ExecutionException("NPANDAY-9011-004: Could not find install root key for mono");
                 string installRoot = Path.Combine(sdkInstallRoot, "bin");
-                npandaySettingsVendorsVendorFrameworksFramework[] vendorFrameworks = new npandaySettingsVendorsVendorFrameworksFramework[2];
-                npandaySettingsVendorsVendorFrameworksFramework vf11 = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework[] vendorFrameworks = new npandaySettingsVendorFramework[2];
+                npandaySettingsVendorFramework vf11 = new npandaySettingsVendorFramework();
                 vf11.installRoot = installRoot;
                 vf11.frameworkVersion = "1.1.4322";
                 vendorFrameworks[0] = vf11;
 
-                npandaySettingsVendorsVendorFrameworksFramework vf20 = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework vf20 = new npandaySettingsVendorFramework();
                 vf20.installRoot = installRoot;
                 vf20.frameworkVersion = "2.0.50727";
                 vendorFrameworks[1] = vf20;
 
-                npandaySettingsVendorsVendorFrameworksFramework vf35 = new npandaySettingsVendorsVendorFrameworksFramework();
+                npandaySettingsVendorFramework vf35 = new npandaySettingsVendorFramework();
                 vf35.installRoot = installRoot;
                 vf35.frameworkVersion = "3.5";
                 vendorFrameworks[2] = vf35;
 
-                npandaySettingsVendorsVendor vendor = new npandaySettingsVendorsVendor();
+                npandaySettingsVendor vendor = new npandaySettingsVendor();
                 vendor.vendorName = "MONO";
                 vendor.vendorVersion = keyName;
                 vendor.frameworks = vendorFrameworks;

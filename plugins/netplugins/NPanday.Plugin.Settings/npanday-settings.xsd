@@ -52,6 +52,19 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="cultures">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="culture" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

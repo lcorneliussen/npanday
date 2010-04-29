@@ -28,6 +28,29 @@ under the License.
   <artifactId>NPanday.Plugin.Settings</artifactId>  
   <packaging>netplugin</packaging>  
   <name>NPanday :: Settings Plugin</name>  
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>npanday.plugin</groupId>
+        <artifactId>maven-xsd-plugin</artifactId>
+        <!-- bootstrapping -->
+        <version>${stable.npanday.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>xsd</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <outputDirectory>${project.build.directory}${file.separator}build-sources${file.separator}NPanday${file.separator}Plugin${file.separator}Settings</outputDirectory>
+          <xsdFile>${basedir}/npanday-settings.xsd</xsdFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
   <dependencies> 
     <dependency> 
       <groupId>npanday.plugin</groupId>  
