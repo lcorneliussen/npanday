@@ -25,7 +25,6 @@ under the License.
     <AssemblyName>NPanday.VisualStudio.Addin</AssemblyName>
     <BaseIntermediateOutputPath>..\..\..\target\obj\</BaseIntermediateOutputPath>
     <OutputType>Library</OutputType>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup>
     <OutputPath>..\..\..\target\</OutputPath>
@@ -73,6 +72,10 @@ under the License.
     <Compile Include="NPanday\VisualStudio\Addin\ChangeMavenSettingsXmlForm.Designer.cs">
       <DependentUpon>ChangeMavenSettingsXmlForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NPanday\VisualStudio\Addin\Commands\ButtonCommandRegistry.cs" />
+    <Compile Include="NPanday\VisualStudio\Addin\Commands\AddArtifactsCommand.cs" />
+    <Compile Include="NPanday\VisualStudio\Addin\Commands\ButtonCommand.cs" />
+    <Compile Include="NPanday\VisualStudio\Addin\Commands\IButtonCommandContext.cs" />
     <Compile Include="NPanday\VisualStudio\Addin\ConfigureMavenRepositoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +84,7 @@ under the License.
     </Compile>
     <Compile Include="NPanday\VisualStudio\Addin\Connect.cs" />
     <Compile Include="NPanday\VisualStudio\Addin\FolderWatcher.cs" />
+    <Compile Include="NPanday\VisualStudio\Addin\Helper\BuiltinCommandFinder.cs" />
     <Compile Include="NPanday\VisualStudio\Addin\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +112,11 @@ under the License.
       <DependentUpon>RemoveArtifactsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NPanday\VisualStudio\Addin\ArtifactUtils.cs" />
+    <Compile Include="Resources\VSCommandCaptions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VSCommandCaptions.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NPanday\VisualStudio\Addin\AddArtifactsForm.resx">
@@ -121,6 +130,10 @@ under the License.
     <EmbeddedResource Include="NPanday\VisualStudio\Addin\ConfigureMavenRepositoryForm.resx">
       <DependentUpon>ConfigureMavenRepositoryForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NPanday\VisualStudio\Addin\LoginForm.de.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NPanday\VisualStudio\Addin\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -136,6 +149,14 @@ under the License.
     <EmbeddedResource Include="NPanday\VisualStudio\Addin\RemoveArtifactsForm.resx">
       <DependentUpon>RemoveArtifactsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VSCommandCaptions.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VSCommandCaptions.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VSCommandCaptions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
